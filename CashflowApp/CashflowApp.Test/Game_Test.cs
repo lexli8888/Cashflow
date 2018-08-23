@@ -16,28 +16,46 @@ namespace CashflowApp.Test
         }
 
         [Fact]
-        public void createBoardTest() {
+        public void createBoardTest()
+        {
             Game game = new Game(DateTime.Now);
             Board board = game.createBoard();
             Assert.NotNull(board);
         }
 
         [Fact]
-        public void addPlayerTest() {
+        public void addPlayerTest()
+        {
             Game game = new Game(DateTime.Now);
-            Player player = new Player();
+            Player player = new Player("Testuser_1");
             game.addPlayer(player);
             Assert.True(game.getPlayer(player));
         }
 
         [Fact]
-        public void numberOfPlayersTest() {
+        public void numberOfPlayersTest()
+        {
             Game game = new Game(DateTime.Now);
-            Player player1 = new Player();
-            Player player2 = new Player();
+            Player player1 = new Player("Testuser_1");
+            Player player2 = new Player("Testuser_2");
             game.addPlayer(player1);
             game.addPlayer(player2);
             Assert.Equal(2, game.numberOfPlayers());
         }
+
+        [Fact]
+        public void startGameTest() {
+            Game game = new Game(DateTime.Now);
+            Player player1 = new Player("Testuser_1");
+            Player player2 = new Player("Testuser_2");
+            game.addPlayer(player1);
+            game.addPlayer(player2);
+            game.start();
+            Assert.NotNull(player1.Piece);
+            Assert.NotNull(player2.Piece);
+        }
+
+        
+
     }
 }

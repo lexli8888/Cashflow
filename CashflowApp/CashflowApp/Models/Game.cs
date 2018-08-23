@@ -49,5 +49,10 @@ namespace CashflowApp.Business.Models
         public TimeSpan duration() {
             return DateTime.Now - Time;
         }
+
+        public void start()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
